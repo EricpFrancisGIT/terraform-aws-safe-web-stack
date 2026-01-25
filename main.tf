@@ -7,7 +7,13 @@ terraform {
       version = "~> 5.0"
     }
   }
+backend "s3" {
+    bucket = "eric-tf-boot-20260123-01"
+    key = "state/terraform.tfstate"
+    region = "us-east-1"
 }
+}
+
 
 provider "aws" {
   region = var.aws_region
