@@ -3,5 +3,7 @@ locals {
     Project     = "terraform-aws-safe-web-stack"
     Environment = var.environment
     Owner       = var.owner
+    ManagedBy   = "Terraform"
+    
   }
 }
