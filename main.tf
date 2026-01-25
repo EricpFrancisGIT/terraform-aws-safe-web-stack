@@ -16,9 +16,8 @@ provider "aws" {
 resource "aws_s3_bucket" "bootstrap" {
   bucket = var.bucket_name
 
-  tags = {
-    Project = "terraform-aws-safe-web-stack"
-    Owner   = "Eric"
-    Day     = "1"
-  }
+  tags = merge(
+    local.common_tags,
+    { Day = "2" }
+  )
 }
