@@ -7,11 +7,11 @@ terraform {
       version = "~> 5.0"
     }
   }
-backend "s3" {
+  backend "s3" {
     bucket = "eric-tf-boot-20260123-01"
-    key = "state/terraform.tfstate"
+    key    = "state/terraform.tfstate"
     region = "us-east-1"
-}
+  }
 }
 
 
@@ -26,4 +26,9 @@ resource "aws_s3_bucket" "bootstrap" {
     local.common_tags,
     { Day = "2" }
   )
+
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes = [tags["Day"]]
+  }
 }
