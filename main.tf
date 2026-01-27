@@ -29,6 +29,6 @@ resource "aws_s3_bucket" "bootstrap" {
 
   lifecycle {
     prevent_destroy = true
-    ignore_changes = [tags["Day"]]
+    ignore_changes  = [tags["Day"]]
   }
 }
