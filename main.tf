@@ -7,11 +7,11 @@ terraform {
       version = "~> 5.0"
     }
   }
-  backend "s3" {
-    bucket = "eric-tf-boot-20260123-01"
-    key    = "state/terraform.tfstate"
-    region = "us-east-1"
-  }
+  #backend "s3" {
+   # bucket = "eric-tf-boot-20260127-01"
+    #key    = "state/terraform.tfstate"
+    #region = "us-east-1"
+  #}
 }
 
 
@@ -19,16 +19,17 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_s3_bucket" "bootstrap" {
-  bucket = var.bucket_name
+module "s3_bucket" {
+  source = "./modules/s3"
+
+  bucket_name = var.bucket_name
 
   tags = merge(
     local.common_tags,
-    { Day = "2" }
+    { Day = "8" }
   )
-
-  lifecycle {
-    prevent_destroy = true
-    ignore_changes  = [tags["Day"]]
-  }
 }
+
+
+
+
