@@ -8,9 +8,9 @@ terraform {
     }
   }
   #backend "s3" {
-   # bucket = "eric-tf-boot-20260127-01"
-    #key    = "state/terraform.tfstate"
-    #region = "us-east-1"
+  # bucket = "eric-tf-boot-20260127-01"
+  #key    = "state/terraform.tfstate"
+  #region = "us-east-1"
   #}
 }
 
